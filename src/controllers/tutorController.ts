@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
-import { tutorsPull } from "../services/tutorServices";
+import { tutorCreate, tutorsPull } from "../services/tutorServices";
+import { Tutors } from "../models/tutorModel";
 
 
-export const getAllTutors = async (req: Request ,res: Response) => {
+export const getAllTutors = async (req: Request, res: Response) => {
     try {
         const tutors = await tutorsPull()
         res.status(200).json(tutors)
@@ -11,6 +12,15 @@ export const getAllTutors = async (req: Request ,res: Response) => {
     }
 };
 
+export const postTutors = async(req: Request, res: Response) => {
+    try {
+        const tutorNew: Tutors = req.body
+        const tutorCreated = await tutorCreate(tutorNew)
+        res.status(201).json(tutorCreated)
+    } catch (error: any){
+        res.status(400).json((error as Error).message)
+    }
+}
 // export const createTutors = (req,res) => {
 
 // };
