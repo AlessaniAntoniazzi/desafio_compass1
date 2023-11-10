@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { tutorCreate, tutorUpdateServices, tutorsPull } from "../services/tutorServices";
+import { tutorCreate, tutorDelete, tutorUpdateServices, tutorsPull } from "../services/tutorServices";
 import { Tutors } from "../models/tutorModel";
 
 
@@ -34,6 +34,14 @@ export const putTutors = async(req: Request, res: Response) => {
     }
 }
 
-// export const deleTutors = (req,res) => {
+export const deleteTutors = async(req: Request, res: Response) => {
+    try{
+        const tutorToDelete = Number(req.params.id)
+        const babana: Partial<Tutors> = req.body
+        const tutorDeletedFinal = await tutorDelete(tutorToDelete, babana)
+        res.status(201).json(tutorDeletedFinal)
+    } catch (error: any) {
+        res.status(400).json((error as Error).message)
+    }
 
-// };
+};

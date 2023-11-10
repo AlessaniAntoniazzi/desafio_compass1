@@ -24,7 +24,17 @@ export class TutorAll {
             return "Tutor updated sucessfully"
         } else {
             return "Tutor wasn't found"
+        }  
+    }
+    async delete(tutorIdDelete: number, props: Partial <Tutors>){
+        const tutorDeleted = Tutor.findIndex((tutor: Tutors) => tutor.id === tutorIdDelete);
+        if (Tutor [tutorDeleted]){
+            Tutor[tutorDeleted] = {...Tutor[tutorDeleted], ...props}
+            Tutor.splice(tutorDeleted)
+            return "Tutor was deleted!"
+
+        }else {
+            return "Tutor wasn't found"
         }
-        
     }
 }

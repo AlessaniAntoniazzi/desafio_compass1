@@ -20,3 +20,9 @@ export const tutorUpdateServices = async(idIndex: number, props: Partial<Tutors>
     const data = await tutorUps.update(idIndex, props);
     return data;
 }
+
+export const tutorDelete = async(tutorIdDelete: number, props: Partial<Tutors> ) => {
+    const tutorToBeDeleted = new TutorAll();
+    const data = await tutorToBeDeleted.delete(tutorIdDelete, props);
+    return data;
+}
