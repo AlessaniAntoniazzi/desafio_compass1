@@ -1,11 +1,13 @@
 import express from 'express'
-import { routers } from './routes/tutorRoutes';
+import { routersTutors } from './routes/tutorRoutes';
+import { routersPets } from './routes/petRoutes';
 
 const app = express();
 const port = 8000;
 
 app.use(express.json())
-app.use("/", routers)
+app.use("/", routersTutors)
+app.use("/", routersPets)
 
 app.listen(port, () => {
     console.log("asdlnwefei")

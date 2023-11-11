@@ -21,7 +21,7 @@ export class TutorAll {
         const tutorsDb = Tutor.findIndex((tutor: Tutors) => tutor.id === idIndex);
         if (Tutor [tutorsDb]) {
             Tutor [tutorsDb] = {...Tutor[tutorsDb], ...props};
-            return "Tutor updated sucessfully"
+            return "Tutor was updated sucessfully"
         } else {
             return "Tutor wasn't found"
         }  
@@ -31,10 +31,12 @@ export class TutorAll {
         if (Tutor [tutorDeleted]){
             Tutor[tutorDeleted] = {...Tutor[tutorDeleted], ...props}
             Tutor.splice(tutorDeleted)
-            return "Tutor was deleted!"
+            return "Tutor was deleted sucessfully!"
 
         }else {
             return "Tutor wasn't found"
         }
     }
 }
+
+
