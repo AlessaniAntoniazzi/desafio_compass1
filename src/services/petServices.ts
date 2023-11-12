@@ -13,3 +13,8 @@ export const petUpdate = async(tutorIdUpdate: number, petIdUpdate: number, props
     return data;
 }
 
+export const petDelete = async(tutorIdUpdate: number, petIdUpdate: number, props: Partial<Pet>) => {
+    const petToBeDeleted = new PetsAll();
+    const data = await petToBeDeleted.delete(tutorIdUpdate, petIdUpdate, props);
+    return data;
+}
