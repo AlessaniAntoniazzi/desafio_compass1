@@ -7,8 +7,9 @@ export const petCreate = async(props: Pet, tutorIdPet: number) =>{
     return data;
 }
 
-// export const petCreate = async (props: Pet, tutorId: number) => {
-//     const petRepository = new PetsAll();
-//     const data = await petRepository.create(props, tutorId);
-//     return data;
-// }
+export const petUpdate = async(tutorIdUpdate: number, petIdUpdate: number, props: Partial<Pet>) => {
+    const petToBeUpdated = new PetsAll();
+    const data = await petToBeUpdated.update(tutorIdUpdate, petIdUpdate, props);
+    return data;
+}
+

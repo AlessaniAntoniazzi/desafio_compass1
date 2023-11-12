@@ -26,8 +26,8 @@ export const postTutors = async(req: Request, res: Response) => {
 export const putTutors = async(req: Request, res: Response) => {
     try {
         const tutorId = Number(req.params.id)
-        const tutorIdUpated: Partial<Tutors> = req.body
-        const tutorIdUpdatedFinal = await tutorUpdateServices(tutorId, tutorIdUpated)
+        const tutorIdUpdated: Partial<Tutors> = req.body
+        const tutorIdUpdatedFinal = await tutorUpdateServices(tutorId, tutorIdUpdated)
         res.status(201).json(tutorIdUpdatedFinal)
     } catch (error: any){
         res.status(400).json((error as Error).message)
