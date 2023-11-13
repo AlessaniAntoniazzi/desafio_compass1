@@ -7,13 +7,13 @@ export class TutorAll {
     }
     async create(props: Tutors){
         const tutorCreate = await this.all();
-        const tutorExist = tutorCreate?.find((tutor) => {
-            tutor.id === props.id;
-        })
-        if (tutorExist){
+        const tutorExist = tutorCreate?.findIndex((tutor) =>  (tutor.id === props.id));
+        if (tutorExist === -1){
+            Tutor.push(props);
+            return "Tutor was created successfully"
+        } else if (tutorExist !== -1) {
             return "This tutor already exists"
         }
-        return Tutor.push(props);
     }
     // Aqui vai dar update nos tutores, criei o idIndex que vai receber o input, o props ...,
     // o tutorsDb vai procurar o index do tutor, e vai procurar dentro dele o id pra comparar com o input
