@@ -1,4 +1,4 @@
-##VetClinic Microservice
+## VetClinic Microservice
 
 The client engaged Compass to develop a new microservice for their veterinary franchise, aiming to streamline internal client and attendance management across all owned clinics. The primary objective is to build the proof of concept (POC) foundation, providing the sales and management team with a technical overview of the client's requirements.
 
