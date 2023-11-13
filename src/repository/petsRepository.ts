@@ -25,15 +25,18 @@ export class PetsAll {
         const tutor = Tutor[tutorIndex];
         const petIndex = tutor.pets?.findIndex((pet) => pet.id === petIdUpdate);
         if(petIndex !== undefined && petIndex !== -1 && tutor.pets){
+            const isPetIdAlreadyExists = tutor.pets.some((pet) => pet.id === props.id);
+            if (isPetIdAlreadyExists) {
+                return "This pet ID already exists for the tutor";
+            } else {
             tutor.pets[petIndex] = {...tutor.pets[petIndex], ...props};
             return "Pet updated successfully"
-            } else {
-                return "Pet not found"
             }
-        } else {
-            return "Tutor not found"
         }
-    }
+        return "Pet not found";
+    } 
+    return "Tutor not found";
+}
     async delete(tutorIdUpdate: number, petIdUpdate: number, props: Partial<Pet>){
         const tutorIndex = Tutor.findIndex((tutor: Tutors) => tutor.id === tutorIdUpdate);
         if (tutorIndex !== -1){

@@ -10,5 +10,5 @@ app.use("/", routersTutors)
 app.use("/", routersPets)
 
 app.listen(port, () => {
-    console.log("asdlnwefei")
+    console.log("server started")
 })
