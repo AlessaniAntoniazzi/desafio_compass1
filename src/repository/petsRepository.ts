@@ -3,14 +3,21 @@ import {Tutor} from "../db/data";
 import {Tutors} from "../models/tutorModel"
 
 export class PetsAll {
-    async create(props: Pet, tutorIdPet: number){
-        const tutorIndex = await Tutor.findIndex((tutor) => tutor.id === tutorIdPet);
+    async create(props: Pet, tutorIdUpdate: number){
+        const tutorIndex = Tutor.findIndex((tutor) => tutor.id === tutorIdUpdate);
         if (tutorIndex !== -1){
-            Tutor[tutorIndex].pets?.push(props);
-            return "Pet was successfully created";
+            const existingIndex = (Tutor[tutorIndex].pets as Pet[])?.findIndex((pet) => pet.id === props.id);
+            if(existingIndex === -1){
+                Tutor[tutorIndex].pets?.push(props);
+                return "Pet was created successfully";
+            }
+            else {
+                return "This ID already exists for a pet";
+            }
         }
-        return "Pet wasn't created";
-        }
+        return "Tutor not found"
+    
+    }
 
     async update(tutorIdUpdate: number, petIdUpdate: number, props: Partial<Pet>){
     const tutorIndex = Tutor.findIndex((tutor: Tutors) => tutor.id === tutorIdUpdate);
