@@ -7,7 +7,7 @@ export class TutorAll {
     }
     async create(props: Tutors){
         const tutorCreate = await this.all();
-        const tutorExist = tutorCreate?.findIndex((tutor) =>  (tutor.id === props.id));
+        const tutorExist = tutorCreate?.findIndex((tutor) => (tutor.id === props.id));
         if (tutorExist === -1){
             Tutor.push(props);
             return "Tutor was created successfully"
@@ -15,15 +15,20 @@ export class TutorAll {
             return "This tutor already exists"
         }
     }
-    // Aqui vai dar update nos tutores, criei o idIndex que vai receber o input, o props ...,
-    // o tutorsDb vai procurar o index do tutor, e vai procurar dentro dele o id pra comparar com o input
+    
     async update(idIndex: number, props: Partial<Tutors>){
-        const tutorsDb = Tutor.findIndex((tutor: Tutors) => tutor.id === idIndex);
-        if (Tutor [tutorsDb]) {
-            Tutor [tutorsDb] = {...Tutor[tutorsDb], ...props};
-            return "Tutor was updated sucessfully"
-        } else {
-            return "Tutor wasn't found"
+        const tutorsDb = Tutor.findIndex((tutor) => tutor.id === idIndex);
+        if (tutorsDb !== -1) {
+            const idAlreadyExists = Tutor.some((tutor) => tutor.id !== idIndex && tutor.id == props.id);
+            if (idAlreadyExists){
+                return "This id already exists";
+            }
+            else {
+                Tutor [tutorsDb] = {...Tutor[tutorsDb], ...props};
+                return "Tutor was updated sucessfully";
+            }  
+        } else if (tutorsDb === -1){
+            return "Tutor wasn't found";
         }  
     }
     async delete(tutorIdDelete: number, props: Partial <Tutors>){
