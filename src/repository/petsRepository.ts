@@ -49,6 +49,7 @@ export class PetsAll {
             }
             return "Pet wasn't found"
         }
+        return "Tutor not found"
     }
 }
 

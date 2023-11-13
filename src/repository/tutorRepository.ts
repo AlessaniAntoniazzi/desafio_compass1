@@ -21,14 +21,14 @@ export class TutorAll {
         if (tutorsDb !== -1) {
             const idAlreadyExists = Tutor.some((tutor) => tutor.id !== idIndex && tutor.id == props.id);
             if (idAlreadyExists){
-                return "This id already exists";
+                return "This ID already exists";
             }
             else {
                 Tutor [tutorsDb] = {...Tutor[tutorsDb], ...props};
                 return "Tutor was updated successfully";
             }  
         } else if (tutorsDb === -1){
-            return "Tutor wasn't found";
+            return "Tutor not found";
         }  
     }
     async delete(tutorIdDelete: number, props: Partial <Tutors>){
@@ -39,7 +39,7 @@ export class TutorAll {
             return "Tutor was deleted successfully!"
 
         }else {
-            return "Tutor wasn't found"
+            return "Tutor not found"
         }
     }
 }
