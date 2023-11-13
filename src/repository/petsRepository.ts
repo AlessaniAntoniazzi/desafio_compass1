@@ -47,7 +47,7 @@ export class PetsAll {
                 tutor.pets.splice(tutorIndex, 1);
                 return "Pet was deleted successfully"
             }
-            return "Pet wasn't found"
+            return "Pet not found"
         }
         return "Tutor not found"
     }
